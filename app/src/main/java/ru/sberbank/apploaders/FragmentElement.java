@@ -36,9 +36,9 @@ public class FragmentElement extends Fragment {
         String specie = getArguments().getString("specie","");
         int mass = getArguments().getInt("mass", 0);
         int height = getArguments().getInt("height", 0);
-        String name = getArguments().getString("name", "");
+        String name = getArguments().getString("nickName", "");
         LinearLayout layout = new LinearLayout(getActivity().getApplicationContext());
-        layout.setBackgroundColor(Color.BLUE);
+        layout.setOrientation(LinearLayout.VERTICAL);
 
         TextView specieView = new TextView(getActivity().getApplicationContext());
         TextView massView = new TextView(getActivity().getApplicationContext());
@@ -54,6 +54,8 @@ public class FragmentElement extends Fragment {
         layout.addView(nameView);
         layout.addView(heightView);
         layout.addView(massView);
+
+        layout.setId(R.id.container);
 
 
 

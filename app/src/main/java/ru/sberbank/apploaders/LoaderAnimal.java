@@ -29,7 +29,7 @@ public class LoaderAnimal extends AsyncTaskLoader {
 
     @Override
     public Object loadInBackground() {
-        int k = Math.abs(random.nextInt())%3;
+        int k = Math.abs(random.nextInt())%AnimalLists.getList().size();
         Animal n= AnimalLists.getList().get(k);
         return n;
     }

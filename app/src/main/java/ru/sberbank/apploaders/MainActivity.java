@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final int LOADER_ID =1;
     public final String TAG = "main";
     private FragmentManager mFragmentManager;
+    private LoaderManager.LoaderCallbacks<Animal> call= this;
     private FragmentTransaction mFragmentTransaction;
     private Button animalBut;
     private Animal data ;
@@ -37,10 +38,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         animalBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentElement myFragment = FragmentElement.newInstance(data.getSpecie(), data.getMass(), data.getHeight(), data.getNickName());
-                mFragmentManager.beginTransaction()
-                        .add(R.id.container, myFragment)
-                        .commit();
+                getSupportLoaderManager().restartLoader(LOADER_ID,null,call);
+                if(data != null) {
+                    FragmentElement myFragment = FragmentElement.newInstance(data.getSpecie(), data.getMass(), data.getHeight(), data.getNickName());
+                    mFragmentManager.beginTransaction()
+
+                            .replace(R.id.container, myFragment)
+                            .commit();
+                }
 
             }
         });
