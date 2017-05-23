@@ -9,6 +9,7 @@ import java.util.List;
 
 public class AnimalLists {
     private static final List<Animal> list = new ArrayList<>();
+    private List<onChangeContentListener> listeners = new ArrayList<>();
     AnimalLists(){
         list.add(new Animal("cat",5,20,"Kyle"));
         list.add(new Animal("dog",20,40,"Bob"));
@@ -20,8 +21,22 @@ public class AnimalLists {
         list.add(new Animal("hear",20,40,"Valli"));
         list.add(new Animal("snake",10,200,"Kate"));
     }
-
-    public static List<Animal> getList() {
-        return list;
+    public void AddListener(onChangeContentListener listener){
+        listeners.add(listener);
+    }
+    public void RemoveListener(onChangeContentListener listener){
+        listeners.remove(listener);
+    }
+    public  List<Animal> getList() {
+        return new ArrayList<>(list);
+    }
+    public void addAnimal(Animal animal){
+        list.add(animal);
+        for (onChangeContentListener listener : listeners) {
+            listener.Added(this, animal);
+        }
+    }
+    public interface onChangeContentListener{
+        public void Added(AnimalLists sender,Animal animal);
     }
 }

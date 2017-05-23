@@ -5,31 +5,31 @@ package ru.sberbank.apploaders;
  */
 
 public class Animal {
-    private String Specie;
-    private int mass;
+    private String specie;
+    private int weight;
     private int height;
-    private String NickName;
+    private String name;
 
-    public Animal(String specie, int mass, int height, String nickName) {
-        Specie = specie;
-        this.mass = mass;
+    public Animal(String specie, int mass, int height, String name) {
+        this.specie = specie;
+        this.weight = mass;
         this.height = height;
-        NickName = nickName;
+        this.name = name;
     }
 
     public String getSpecie() {
-        return Specie;
+        return specie;
     }
 
     public int getMass() {
-        return mass;
+        return weight;
     }
 
     public int getHeight() {
         return height;
     }
 
-    public String getNickName() {
-        return NickName;
+    public String getName() {
+        return name;
     }
 }

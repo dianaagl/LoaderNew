@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AppLoaders.iml" filepath="$PROJECT_DIR$/AppLoaders.iml" />
+      <module fileurl="file://D:\AppLoadersn\AppLoadersn\AppLoaders.iml" filepath="D:\AppLoadersn\AppLoadersn\AppLoaders.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AppLoadersn.iml" filepath="$PROJECT_DIR$/AppLoadersn.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

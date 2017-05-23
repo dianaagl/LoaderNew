@@ -7,13 +7,12 @@
     android:layout_height="match_parent"
     tools:context="ru.sberbank.apploaders.MainActivity">
 
-<LinearLayout
-        android:id="@+id/container"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<ListView
+    android:id="@+id/listAnimals"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-</LinearLayout>
+</ListView>
    <Button
            android:text="Выбрать"
        android:id="@+id/animal_but"

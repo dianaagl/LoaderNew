@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AppLoaders</string>
+    <string name="species">Вид</string>
+    <string name="height">Рост</string>
+    <string name="name">Имя</string>
+    <string name="weight">Вес</string>
+    <string name="create">Создать</string>
+    <string name="height_name">Рост</string>
 </resources>

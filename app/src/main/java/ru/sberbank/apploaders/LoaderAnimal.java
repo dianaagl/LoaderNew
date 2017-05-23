@@ -3,34 +3,56 @@ package ru.sberbank.apploaders;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
-import android.util.Log;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by user8 on 18.05.2017.
  */
 
-public class LoaderAnimal extends AsyncTaskLoader {
-    final Random random = new Random();
+public class LoaderAnimal extends AsyncTaskLoader<List<Animal>> implements AnimalLists.onChangeContentListener{
 
-    public LoaderAnimal(Context context) {
+    AnimalLists storage ;
+    private List<Animal> cacheAnimal;
+
+    public LoaderAnimal(Context context,AnimalLists storage) {
         super(context);
-        forceLoad();
+        this.storage = storage;
+        storage.AddListener(this);
+    }
 
+
+    @Override
+    public void deliverResult(List<Animal> data) {
+        super.deliverResult(data);
+        cacheAnimal = new ArrayList<>(data);
 
     }
 
     @Override
     protected void onStartLoading() {
         super.onStartLoading();
-        AnimalLists l = new AnimalLists();
+        if(cacheAnimal == null || takeContentChanged()){
+            forceLoad();
+        }
+
+
+
+
+
     }
 
     @Override
-    public Object loadInBackground() {
-        int k = Math.abs(random.nextInt())%AnimalLists.getList().size();
-        Animal n= AnimalLists.getList().get(k);
+    public List<Animal> loadInBackground() {
+
+        List<Animal> n= storage.getList();
         return n;
+    }
+
+    @Override
+    public void Added(AnimalLists sender, Animal animal) {
+        onContentChanged();
+        storage.RemoveListener(this);
     }
 }
